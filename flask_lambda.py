@@ -134,18 +134,18 @@ class FlaskLambda(Flask):
             else:
                 response_body = base64.b64encode(body.data).decode('utf-8')
                 is_base64_encoded = True
-    else:
-        response_body = ""
-        is_base64_encoded = False
+        else:
+          response_body = ""
+          is_base64_encoded = False
 
-    ret = {
-        'statusCode': body.status_code,
-        'headers': {},
-        'body': response_body
-    }
+        ret = {
+            'statusCode': body.status_code,
+            'headers': {},
+            'body': response_body
+        }
 
-    if is_base64_encoded:
-        ret['isBase64Encoded'] = "true"
+        if is_base64_encoded:
+          ret['isBase64Encoded'] = "true"
 
         for key, value in body.headers:
             ret['headers'][key] = value
